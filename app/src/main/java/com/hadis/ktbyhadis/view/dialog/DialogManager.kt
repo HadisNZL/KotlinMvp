@@ -4,7 +4,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
 import com.hadis.ktbyhadis.R
 import com.twobbble.tools.toast
 import kotlinx.android.synthetic.main.anim_drawable_dialog_layout.view.*
@@ -37,6 +40,11 @@ class DialogManager(private val mContext: Context) {
      */
     fun customAnimLoading(title: String = mContext.resources.getString(R.string.loading)) {
         val dialog = Dialog(mContext, R.style.MyDialog)
+        dialog.window.setGravity(Gravity.LEFT and Gravity.RIGHT)
+
+        dialog.window.attributes.x = 0
+        dialog.window.attributes.y = 500
+
         val view = LayoutInflater.from(mContext).inflate(R.layout.anim_drawable_dialog_layout, null)
         view.id_tv_loadingmsg.text = title
         dialog.setContentView(view)
@@ -45,6 +53,15 @@ class DialogManager(private val mContext: Context) {
         dialog.show()
         mDialog = dialog
     }
+
+
+    fun rotateAnimLoading() {
+        val dialog = Dialog(mContext, R.style.MyDialog)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.anim_drawable_dialog_layout, null)
+        val rotateAnim = RotateAnimation(0f, 360f, Animation.RESTART, 0.5f, Animation.RESTART, 0.5f)
+        rotateAnim.duration = 500
+    }
+
 
     fun showOptionDialog(title: String,
                          content: String,
