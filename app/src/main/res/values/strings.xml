@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">占卜者</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="update">Update</string>
+    <string name="click_retry">点击再试一次</string>
+    <string name="no_shot">No shot here</string>
+    <string name="start_speak">Please say the keywords</string>
+    <string name="please_wait">请稍后..</string>
+    <string name="into_the_bucket">Into the bucket</string>
+    <string name="input_keyword">Input keyword</string>
+    <string name="bucket_name_null">Buckets name can not be empty</string>
+    <string name="create">create</string>
+    <string name="input_bucket_name">Enter the name of the bucket</string>
+    <string name="input_bucket_description">Enter the description of this bucket</string>
+    <string name="create_bucket">Create a bucket</string>
+    <string name="net_disable">当前网络不可用</string>
+    <string name="gif">GIF</string>
+    <string name="load_retry">未能加载,点击再试一次</string>
+</resources>

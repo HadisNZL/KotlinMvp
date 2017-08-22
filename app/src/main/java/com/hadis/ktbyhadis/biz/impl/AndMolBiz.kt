@@ -1,0 +1,23 @@
+package com.hadis.ktbyhadis.biz.impl
+
+import com.hadis.ktbyhadis.biz.api.IAndMolBiz
+import com.hadis.ktbyhadis.entity.AndMol
+import com.twobbble.biz.impl.BaseBiz
+import com.twobbble.tools.NetSubscriber
+import com.twobbble.tools.RxHelper
+import com.wingsofts.gankclient.bean.JsonResult
+import org.jetbrains.annotations.NotNull
+import rx.Subscription
+
+/**
+ * Created by niuzilin on 2017/8/11.
+ */
+class AndMolBiz : IAndMolBiz, BaseBiz() {
+    override fun getAndroid(@NotNull type: String, page: Int?, pagesize: Int?, subscriber:
+    NetSubscriber<JsonResult<MutableList<AndMol>>>): Subscription {
+        getNetService().getAndroid(type, page, pagesize).compose(RxHelper.singleModeThread())
+                .subscribe(subscriber)
+        return subscriber
+    }
+
+}

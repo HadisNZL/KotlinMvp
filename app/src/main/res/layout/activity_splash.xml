@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bac">
+
+    <ImageView
+        android:id="@+id/iv_icon_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/diviner_icon_mall" />
+
+    <TextView
+        android:id="@+id/tv_name_english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_icon_splash"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="Diviner"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name_english"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="占卜者"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_english_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_intro"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="16dp"
+        android:text="Love is a vine that grows into our hearts"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="46dp"
+        android:text="kotlinByNiuZiLin"
+        android:textColor="@color/white" />
+</RelativeLayout>
