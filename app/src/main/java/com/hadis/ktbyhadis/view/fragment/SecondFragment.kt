@@ -77,7 +77,7 @@ class SecondFragment : BaseFragment(), IVideoMolView {
 
     override fun showProgress() {
         super.showProgress()
-        mDialogMananer.customAnimLoading()
+        mDialogMananer.rotateAnimLoading()
     }
 
     override fun hideProgress() {

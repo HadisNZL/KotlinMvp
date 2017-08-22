@@ -21,7 +21,7 @@ class DetailsActivity : BaseActivity() {
     }
 
     private fun initView() {
-        mDialogMananer.customAnimLoading()
+        mDialogMananer.rotateAnimLoading()
         urlStr = intent.getStringExtra("url")
         webView.loadUrl(urlStr)
         webView.webViewClient = object : WebViewClient() {

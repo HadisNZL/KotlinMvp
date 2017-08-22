@@ -93,8 +93,7 @@ class HomeFragment : BaseFragment(), IAndMolView, SwipeRefreshLayout.OnRefreshLi
 
     override fun showProgress() {
         super.showProgress()
-//        mDialogMananer.showCircleProgressDialog()
-        mDialogMananer.customAnimLoading()
+        mDialogMananer.rotateAnimLoading()
     }
 
     override fun hideProgress() {

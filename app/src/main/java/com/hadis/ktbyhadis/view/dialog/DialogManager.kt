@@ -7,9 +7,11 @@ import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.animation.Animation
-import android.view.animation.RotateAnimation
+import android.view.animation.AnimationUtils
+import android.view.animation.LinearInterpolator
 import com.hadis.ktbyhadis.R
 import com.twobbble.tools.toast
+import kotlinx.android.synthetic.main.anim_begin_end.view.*
 import kotlinx.android.synthetic.main.anim_drawable_dialog_layout.view.*
 import kotlinx.android.synthetic.main.create_bucket_dialog.view.*
 
@@ -55,11 +57,40 @@ class DialogManager(private val mContext: Context) {
     }
 
 
+    /**
+     * 插值器
+     * Android 动画之Interpolator插入器，比较简单和常用的：
+
+    （1）LinearInterpolator：动画从开始到结束，变化率是线性变化。
+    （2）AccelerateInterpolator：动画从开始到结束，变化率是一个加速的过程。
+    （3）DecelerateInterpolator：动画从开始到结束，变化率是一个减速的过程。
+    （4）CycleInterpolator：动画从开始到结束，变化率是循环给定次数的正弦曲线。
+    （5）AccelerateDecelerateInterpolator：动画从开始到结束，变化率是先加速后减速的过程。
+     */
+
+    private val animation: Animation
+        get() {
+            val mAnimation: Animation = AnimationUtils.loadAnimation(mContext, R.anim.rotate_anim)
+            return mAnimation
+        }
+
     fun rotateAnimLoading() {
         val dialog = Dialog(mContext, R.style.MyDialog)
-        val view = LayoutInflater.from(mContext).inflate(R.layout.anim_drawable_dialog_layout, null)
-        val rotateAnim = RotateAnimation(0f, 360f, Animation.RESTART, 0.5f, Animation.RESTART, 0.5f)
-        rotateAnim.duration = 500
+        val view = LayoutInflater.from(mContext).inflate(R.layout.anim_begin_end, null)
+        dialog.setContentView(view)
+        dialog.setCancelable(true)
+
+        dialog.window.attributes.x = 0
+        dialog.window.attributes.y = 500
+
+        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
+        val animation: Animation = AnimationUtils.loadAnimation(mContext, R.anim.rotate_anim)
+        animation.interpolator = LinearInterpolator()
+        view.iv_bg.animation = animation
+        view.iv_bg.startAnimation(animation)
+        dialog.show()
+        mDialog = dialog
+
     }
 
 
@@ -98,6 +129,9 @@ class DialogManager(private val mContext: Context) {
         if (mDialog != null && mDialog!!.isShowing) {
             mDialog!!.dismiss()
             mDialog = null
+            if (animation.hasStarted()) {
+                animation.cancel()
+            }
         }
     }
 
