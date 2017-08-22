@@ -4,10 +4,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import com.hadis.ktbyhadis.R
 import com.twobbble.tools.toast
+import kotlinx.android.synthetic.main.anim_drawable_dialog_layout.view.*
 import kotlinx.android.synthetic.main.create_bucket_dialog.view.*
 
 /**
@@ -28,6 +28,20 @@ class DialogManager(private val mContext: Context) {
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
         dialog.isIndeterminate = true
         dialog.setMessage(text)
+        dialog.show()
+        mDialog = dialog
+    }
+
+    /**
+     * 自定义帧动画Dialog
+     */
+    fun customAnimLoading(title: String = mContext.resources.getString(R.string.loading)) {
+        val dialog = Dialog(mContext, R.style.MyDialog)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.anim_drawable_dialog_layout, null)
+        view.id_tv_loadingmsg.text = title
+        dialog.setContentView(view)
+        dialog.setCancelable(true)
+        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
         mDialog = dialog
     }

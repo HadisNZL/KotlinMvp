@@ -113,7 +113,7 @@ class VideoMoreActivity : BaseActivity(), IVideoMoreMolView, SwipeRefreshLayout.
 
     override fun showProgress() {
         super.showProgress()
-        mDialogMananer.showCircleProgressDialog()
+        mDialogMananer.customAnimLoading()
     }
 
     override fun hideProgress() {

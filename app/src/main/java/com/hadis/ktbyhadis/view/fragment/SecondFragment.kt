@@ -3,7 +3,6 @@ package com.hadis.ktbyhadis.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,7 @@ import com.hadis.ktbyhadis.presenter.IVideoMolPresenter
 import com.hadis.ktbyhadis.view.activity.VideoMoreActivity
 import com.hadis.ktbyhadis.view.adapter.VideoAdapter
 import com.hadis.ktbyhadis.view.api.IVideoMolView
-import com.twobbble.tools.SpUtil
 import kotlinx.android.synthetic.main.fragment_second.*
-import org.jetbrains.anko.support.v4.toast
 
 
 class SecondFragment : BaseFragment(), IVideoMolView {
@@ -76,6 +73,15 @@ class SecondFragment : BaseFragment(), IVideoMolView {
     }
 
     override fun getDataFailed(msg: String) {
+    }
+
+    override fun showProgress() {
+        super.showProgress()
+        mDialogMananer.customAnimLoading()
+    }
+
+    override fun hideProgress() {
+        mDialogMananer.dismissAll()
     }
 
 

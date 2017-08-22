@@ -112,7 +112,7 @@ class ThirdFragment : BaseFragment(), IAndMolView, SwipeRefreshLayout.OnRefreshL
 
     override fun showProgress() {
         super.showProgress()
-        mDialogMananer.showCircleProgressDialog()
+        mDialogMananer.customAnimLoading()
     }
 
     override fun hideProgress() {

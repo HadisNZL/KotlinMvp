@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.LinearSnapHelper
-import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -95,7 +93,8 @@ class HomeFragment : BaseFragment(), IAndMolView, SwipeRefreshLayout.OnRefreshLi
 
     override fun showProgress() {
         super.showProgress()
-        mDialogMananer.showCircleProgressDialog()
+//        mDialogMananer.showCircleProgressDialog()
+        mDialogMananer.customAnimLoading()
     }
 
     override fun hideProgress() {
