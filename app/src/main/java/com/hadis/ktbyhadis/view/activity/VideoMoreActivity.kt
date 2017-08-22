@@ -46,7 +46,7 @@ class VideoMoreActivity : BaseActivity(), IVideoMoreMolView, SwipeRefreshLayout.
             //跳转视频详情页
             var intent: Intent = Intent(applicationContext, VideoDetailsActivity::class.java)
             var title = mLists[it].title
-            var category = mLists[it]?.category
+            var category = mLists[it].category
             var duration = mLists[it].duration
             var photoUrl = mLists[it].cover?.feed
             var desc = mLists[it].description
@@ -57,7 +57,7 @@ class VideoMoreActivity : BaseActivity(), IVideoMoreMolView, SwipeRefreshLayout.
             var reply = mLists[it].consumption?.replyCount
             var time = System.currentTimeMillis()
             var videoBean = VideoBean(photoUrl, title, desc, duration, playUrl, category, blurred, collect, share, reply, time)
-            intent.putExtra("data",videoBean as Parcelable)
+            intent.putExtra("data", videoBean as Parcelable)
             startActivity(intent)
         })
 
