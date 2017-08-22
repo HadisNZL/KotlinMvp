@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.animation.Animation
+import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import com.hadis.ktbyhadis.R
@@ -85,9 +86,16 @@ class DialogManager(private val mContext: Context) {
 
         dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
         val animation: Animation = AnimationUtils.loadAnimation(mContext, R.anim.rotate_anim)
-        animation.interpolator = LinearInterpolator()
-        view.iv_bg.animation = animation
-        view.iv_bg.startAnimation(animation)
+
+        val alphaAnimation: Animation = AnimationUtils.loadAnimation(mContext, R.anim.alpha_anim)
+        val animationSet: AnimationSet = AnimationSet(true)
+
+        animationSet.addAnimation(animation)
+        animationSet.addAnimation(alphaAnimation)
+
+        animationSet.interpolator = LinearInterpolator()
+        view.iv_bg.animation = animationSet
+        view.iv_bg.startAnimation(animationSet)
         dialog.show()
         mDialog = dialog
 

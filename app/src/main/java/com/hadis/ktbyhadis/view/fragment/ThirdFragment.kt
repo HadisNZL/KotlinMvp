@@ -106,8 +106,12 @@ class ThirdFragment : BaseFragment(), IAndMolView, SwipeRefreshLayout.OnRefreshL
             mIsRefresh = false
             refreshLayout.isRefreshing = false
         }
+
+//        val bos:Boolean=mDialogMananer.isShowing
+//        if (bos) {
+//        }
+            mDialogMananer.dismissAll()
         toast(msg)
-        mDialogMananer.dismissAll()
     }
 
     override fun showProgress() {

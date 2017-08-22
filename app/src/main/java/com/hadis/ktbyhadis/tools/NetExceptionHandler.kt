@@ -43,11 +43,11 @@ class NetExceptionHandler {
                 || e is JSONException
                 || e is ParseException) {
             ex = ResponseException(e)
-            ex.message = "数据解析错误，这可能是一个bug，欢迎提交反馈(${ERROR.PARSE_ERROR})"
+            ex.message = "数据解析错误(${ERROR.PARSE_ERROR})~"
             return ex
         } else if (e is ConnectException) {
             ex = ResponseException(e)
-            ex.message = "连接失败，网络连接可能存在异常，请检查网络后重试(${ERROR.NETWORK_ERROR})"
+            ex.message = "连接失败，网络连接可能存在异常，请检查网络后重试(${ERROR.NETWORK_ERROR})~"
             return ex
         } else if (e is SSLHandshakeException) {
             ex = ResponseException(e)
@@ -59,7 +59,7 @@ class NetExceptionHandler {
             return ex
         } else {
             ex = ResponseException(e)
-            ex.message = "出现了未知的错误，要不提交一个反馈给作者呗~(${ERROR.UNKNOWN})"
+            ex.message = "出现了未知的错误(${ERROR.UNKNOWN})~"
             return ex
         }
     }
