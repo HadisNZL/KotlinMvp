@@ -97,8 +97,8 @@ class VideoMoreActivity : BaseActivity(), IVideoMoreMolView, SwipeRefreshLayout.
                 mLists.clear()
             }
         }
-        //forEach  是遍历的意思，  就是遍历集合下面所有项
-        //首先let()的定义是这样的，默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return
+        //forEach 遍历
+        //let 默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return
         ands.itemList?.forEach { it.data?.let { it1 -> mLists.add(it1) } }
         mListAdapter!!.notifyDataSetChanged()
     }
