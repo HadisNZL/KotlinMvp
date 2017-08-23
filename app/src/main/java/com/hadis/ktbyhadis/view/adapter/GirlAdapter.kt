@@ -21,7 +21,7 @@ class GirlAdapter(private val mDatas: List<AndMol>, val itemClick: (Int) -> Unit
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
         Glide.with(App.instance).load(mDatas[position].url)
                 .crossFade()
-                .into(viewHolder.iv)
+                .placeholder(R.color.gray).into(viewHolder.iv)
 
         viewHolder.layout_.setOnClickListener {
             itemClick.invoke(position)
