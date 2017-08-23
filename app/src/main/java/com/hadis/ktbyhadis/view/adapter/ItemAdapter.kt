@@ -24,7 +24,11 @@ class ItemAdapter(private val mDatas: List<AndMol>, val itemClick: (Int) -> Unit
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
         viewHolder.tvTitle.text = mDatas[position].desc
         viewHolder.author.text = mDatas[position].who
-        viewHolder.time.text = mDatas[position].publishedAt
+
+        var timeStr = mDatas[position].publishedAt
+        timeStr = timeStr.substring(0, timeStr.indexOf("."))
+        timeStr =timeStr.replace("T"," ")
+        viewHolder.time.text =timeStr
         if (mDatas[position].hasImg()) {
             viewHolder.iv.visibility = View.VISIBLE
             Glide.with(App.instance).load(mDatas[position].images[0])
