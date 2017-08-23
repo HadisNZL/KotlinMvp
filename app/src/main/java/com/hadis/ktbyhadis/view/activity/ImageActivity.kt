@@ -22,7 +22,7 @@ class ImageActivity : BaseActivity() {
         setupToolbar(toolbar)
         mDialogMananer.rotateAnimLoading()
         tv_title.text = intent.getStringExtra("who")
-        toolbar.setNavigationIcon(R.drawable.icon_back)
+        toolbar.setNavigationIcon(R.drawable.icon_back_white)
         initView()
     }
 

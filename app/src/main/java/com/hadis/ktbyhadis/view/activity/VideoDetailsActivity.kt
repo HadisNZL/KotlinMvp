@@ -22,6 +22,7 @@ import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.tt.lvruheng.eyepetizer.mvp.model.bean.VideoBean
 import com.tt.lvruheng.eyepetizer.utils.VideoListener
 import kotlinx.android.synthetic.main.activity_video_details.*
+import org.jetbrains.anko.image
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.util.concurrent.ExecutionException
@@ -144,6 +145,7 @@ class VideoDetailsActivity : AppCompatActivity() {
             //配合下方的onConfigurationChanged
             orientationUtils.isEnable = !lock
         }
+        gsy_player.backButton.setImageResource(R.drawable.icon_back_white)
         gsy_player.backButton.setOnClickListener(View.OnClickListener {
             onBackPressed()
         })
