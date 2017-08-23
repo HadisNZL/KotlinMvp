@@ -6,10 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import android.view.View
 import com.hadis.ktbyhadis.R
-import com.hadis.ktbyhadis.view.fragment.AboutFragment
-import com.hadis.ktbyhadis.view.fragment.HomeFragment
-import com.hadis.ktbyhadis.view.fragment.SecondFragment
-import com.hadis.ktbyhadis.view.fragment.ThirdFragment
+import com.hadis.ktbyhadis.view.fragment.*
 import com.twobbble.tools.toast
 import kotlinx.android.synthetic.main.activity_main2.*
 import java.util.*
@@ -21,6 +18,8 @@ class Main2Activity : BaseActivity(), View.OnClickListener {
     var thirdFragmnet: ThirdFragment? = null
     var aboutFragment: AboutFragment? = null
     var mExitTime: Long = 0
+
+    lateinit var searchFragment: SearchFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +37,8 @@ class Main2Activity : BaseActivity(), View.OnClickListener {
             if (rb_mine.isChecked) {
                 toast("设置暂未开放")
             } else {
-                toast("搜索暂未开放")
-//                searchFragment = SearchFragment()
-//                searchFragment.show(fragmentManager, SEARCH_TAG)
+                searchFragment = SearchFragment()
+                searchFragment.show(fragmentManager, SEARCH_TAG)
             }
         }
     }
