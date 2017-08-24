@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull
  * Created by niuzilin on 2017/8/11.
  */
 interface IAndMolBiz {
+
     /**
      *获取列表
      */
