@@ -6,6 +6,7 @@ import com.twobbble.tools.delegates.NotNullSingleValueVar
 /**
  * Created by niuzilin on 2017/8/11.
  */
+
 class App : Application() {
     companion object {
         var instance: App by NotNullSingleValueVar.DelegatesExt.notNullSingleValue()
