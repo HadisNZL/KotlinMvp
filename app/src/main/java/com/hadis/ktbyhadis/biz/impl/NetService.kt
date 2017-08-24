@@ -18,7 +18,6 @@ interface NetService {
      * 获取一个android列表
      *
      */
-
     @GET("data/{type}/{page}/{pagesize}")
     fun getAndroid(@NotNull @Path("type") type: String,
                    @Path("page") page: Int?,
@@ -27,6 +26,7 @@ interface NetService {
     /**
      * 视频列表
      */
+
     @GET("v2/categories?udid=26868b32e808498db32fd51fb422d00175e179df&vc=83")
     fun getVideoList(): Flowable<MutableList<VideoMol>>
 
