@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
  */
 class RetrofitFactory1 private constructor() {
     val API_BASE_URL = "http://baobab.kaiyanapp.com/api/"
-    val WEBSITE_BASE_URL = "https://dribbble.com/"
+    val WEBSITE_BASE_URL = ""
     val TIMEOUT: Long = 20
     private var mRetrofit: Retrofit? = null
     private var mNetService: NetService? = null

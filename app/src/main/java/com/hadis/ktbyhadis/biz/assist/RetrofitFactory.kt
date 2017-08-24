@@ -18,9 +18,8 @@ import java.util.concurrent.TimeUnit
  * Created by niuzilin on 2017/08/15.
  */
 class RetrofitFactory private constructor() {
-    //    val API_BASE_URL = "https://api.dribbble.com/v1/"
     val API_BASE_URL = "http://gank.io/api/"
-    val WEBSITE_BASE_URL = "https://dribbble.com/"
+    val WEBSITE_BASE_URL = ""
     val TIMEOUT: Long = 5
     private var mRetrofit: Retrofit? = null
     private var mNetService: NetService? = null
