@@ -57,5 +57,5 @@ dependencies {
 
     implementation 'com.shuyu:GSYVideoPlayer:1.6.8'//视频播放
 
-    //implementation 'zlc.season:rxdownload2:2.0.4'
+    implementation 'zlc.season:rxdownload2:2.0.4'
 }

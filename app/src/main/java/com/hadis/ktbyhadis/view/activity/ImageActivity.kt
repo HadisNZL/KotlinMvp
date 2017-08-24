@@ -47,6 +47,6 @@ class ImageActivity : BaseActivity() {
     }
 
     private fun downPic() {
-      //  RxDownload.getInstance(App.instance).serviceDownload(urlStr,"mm")
+        //RxDownload.getInstance(App.instance).serviceDownload(urlStr,"mm")
     }
 }
