@@ -10,11 +10,9 @@ import com.hadis.ktbyhadis.application.App
 import kotlinx.android.synthetic.main.activity_image.*
 import java.lang.Exception
 
-@Suppress("UNREACHABLE_CODE")
 class ImageActivity : BaseActivity() {
 
     var urlStr = ""
-    var whoStr = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +42,11 @@ class ImageActivity : BaseActivity() {
                 })
                 .into(photo_view)
 
+
+        iv_down.setOnClickListener { downPic() }
     }
 
+    private fun downPic() {
+      //  RxDownload.getInstance(App.instance).serviceDownload(urlStr,"mm")
+    }
 }

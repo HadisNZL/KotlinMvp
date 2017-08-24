@@ -3,24 +3,24 @@ package com.twobbble.tools
 import com.hadis.ktbyhadis.R
 import com.hadis.ktbyhadis.application.App
 import com.twobbble.view.api.IBaseView
-import rx.Subscriber
+import io.reactivex.subscribers.ResourceSubscriber
 
 /**
  * Created by niuzilin on 2017/8/11.
  */
-abstract class NetSubscriber<T>(val baseView: IBaseView? = null) : Subscriber<T>() {
+abstract class NetSubscriber<T>(val baseView: IBaseView? = null) : ResourceSubscriber<T>() {
     override fun onStart() {
         super.onStart()
         if (!Utils.isNetworkAvailable(App.instance)) {
             baseView?.hideProgress()
             onFailed(App.instance.resources.getString(R.string.net_disable))
-            unsubscribe()
+            dispose()
         } else {
             baseView?.showProgress()
         }
     }
 
-    override fun onCompleted() {
+    override fun onComplete() {
         baseView?.hideProgress()
     }
 

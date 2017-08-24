@@ -1,19 +1,20 @@
 package com.twobbble.presenter
 
-import rx.subscriptions.CompositeSubscription
+import io.reactivex.disposables.CompositeDisposable
+
 
 /**
  * Created by niuzilin on 2017/8/11.
  */
 abstract class BasePresenter {
-    val mSubscription: CompositeSubscription by lazy {
-        CompositeSubscription()
+    val mSubscription: CompositeDisposable by lazy {
+        CompositeDisposable()
     }
 
 
     open fun unSubscriber() {
-        if (mSubscription.hasSubscriptions()) {
-            mSubscription.unsubscribe()
+        if (mSubscription.isDisposed) {
+            mSubscription.dispose()
         }
     }
 }

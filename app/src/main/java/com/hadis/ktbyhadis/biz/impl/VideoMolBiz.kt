@@ -5,13 +5,13 @@ import com.hadis.ktbyhadis.entity.VideoMol
 import com.twobbble.biz.impl.BaseBiz1
 import com.twobbble.tools.NetSubscriber
 import com.twobbble.tools.RxHelper
-import rx.Subscription
+import io.reactivex.disposables.Disposable
 
 /**
  * Created by niuzilin on 2017/8/11.
  */
 class VideoMolBiz : IVideoMollBiz, BaseBiz1() {
-    override fun getVideoList(subscriber: NetSubscriber<MutableList<VideoMol>>): Subscription {
+    override fun getVideoList(subscriber: NetSubscriber<MutableList<VideoMol>>): Disposable {
         getNetService().getVideoList().compose(RxHelper.listModeThread()).subscribe(subscriber)
         return subscriber
     }

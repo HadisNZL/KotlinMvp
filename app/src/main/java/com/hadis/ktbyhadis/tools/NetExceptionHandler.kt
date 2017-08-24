@@ -2,10 +2,9 @@ package com.twobbble.tools
 
 import android.net.ParseException
 import com.google.gson.JsonParseException
+import io.reactivex.Flowable
 import org.json.JSONException
-import retrofit2.adapter.rxjava.HttpException
-import rx.Observable
-import rx.functions.Func1
+import retrofit2.adapter.rxjava2.HttpException
 import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.net.ssl.SSLHandshakeException
@@ -100,9 +99,9 @@ class NetExceptionHandler {
         override var message: String? = null
     }
 
-    open class HttpResponseFunc<T> : Func1<Throwable, Observable<T>> {
-        override fun call(t: Throwable): Observable<T> {
-            return Observable.error(NetExceptionHandler().handleException(t))
+    open class HttpResponseFunc<T> : io.reactivex.functions.Function<Throwable, Flowable<T>> {
+        override fun apply(t: Throwable): Flowable<T> {
+            return Flowable.error(NetExceptionHandler().handleException(t))
         }
     }
 }

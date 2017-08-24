@@ -9,7 +9,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -45,14 +45,14 @@ class RetrofitFactory1 private constructor() {
     fun createRetrofit(context: Context) {
         mRetrofit = Retrofit.Builder().client(constructClient(context)).baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
         mNetService = mRetrofit?.create(NetService::class.java)
     }
 
     fun createWebsiteRetrofit(): NetService {
         return Retrofit.Builder().client(constructClient(App.instance)).baseUrl(WEBSITE_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
                 .create(NetService::class.java)
     }
 

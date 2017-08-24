@@ -37,16 +37,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
 
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.1.2'//一个记录请求和响应信息的OkHttp拦截器
 
-    implementation 'io.reactivex:rxjava:1.1.5'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'//一个记录请求和响应信息的OkHttp拦截器
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.2'
 
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 
-    implementation 'io.reactivex:rxandroid:1.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation "org.jetbrains.anko:anko:$anko_version"
 //    implementation "org.jetbrains.anko:anko-common:$anko_version"
 //    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
@@ -55,4 +56,6 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:1.3.0'
 
     implementation 'com.shuyu:GSYVideoPlayer:1.6.8'//视频播放
+
+    //implementation 'zlc.season:rxdownload2:2.0.4'
 }
