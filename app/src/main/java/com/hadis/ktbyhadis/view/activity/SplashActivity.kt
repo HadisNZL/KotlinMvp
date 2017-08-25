@@ -4,10 +4,7 @@ import android.Manifest
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.WindowManager
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.AnimationSet
-import android.view.animation.ScaleAnimation
+import android.view.animation.*
 import com.hadis.ktbyhadis.R
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.twobbble.tools.newIntent
@@ -53,9 +50,12 @@ class SplashActivity : BaseActivity() {
         alphaAnimation.duration = 1500
         val scaleAnimation = ScaleAnimation(0.1f, 1.0f, 0.1f, 1.0f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f)
         scaleAnimation.duration = 1500
+        val rotateAnimation = RotateAnimation(0f, 360f, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f)
+        scaleAnimation.duration = 1500
         val animationSet: AnimationSet = AnimationSet(true)
         animationSet.addAnimation(alphaAnimation)
         animationSet.addAnimation(scaleAnimation)
+        animationSet.addAnimation(rotateAnimation)
         animationSet.duration = 1500
         iv_icon_splash.startAnimation(animationSet)
         animationSet.setAnimationListener(object : Animation.AnimationListener {
