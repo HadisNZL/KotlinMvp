@@ -1,5 +1,6 @@
 package com.hadis.ktbyhadis.view.activity
 
+import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -20,10 +21,12 @@ class Main2Activity : BaseActivity(), View.OnClickListener {
     var mExitTime: Long = 0
 
     lateinit var searchFragment: SearchFragment
+    var mPm: PackageManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+        mPm = applicationContext.packageManager
         setRadioButton()
         initToolbar()
         initFragment(savedInstanceState)
@@ -184,5 +187,4 @@ class Main2Activity : BaseActivity(), View.OnClickListener {
         }
         return super.onKeyDown(keyCode, event)
     }
-
 }

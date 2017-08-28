@@ -1,6 +1,10 @@
 package com.hadis.ktbyhadis.view.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
 import com.bumptech.glide.request.RequestListener
@@ -8,6 +12,10 @@ import com.bumptech.glide.request.target.Target
 import com.hadis.ktbyhadis.R
 import com.hadis.ktbyhadis.application.App
 import kotlinx.android.synthetic.main.activity_image.*
+import org.jetbrains.anko.toast
+import zlc.season.rxdownload2.RxDownload
+import java.io.File
+import java.io.FileNotFoundException
 import java.lang.Exception
 
 class ImageActivity : BaseActivity() {
@@ -46,7 +54,35 @@ class ImageActivity : BaseActivity() {
         iv_down.setOnClickListener { downPic() }
     }
 
+
     private fun downPic() {
-        //RxDownload.getInstance(App.instance).serviceDownload(urlStr,"mm")
+
+        val dir = Environment.getExternalStorageDirectory().toString() + "/ktByHadis"
+        val name = System.currentTimeMillis().toString() + ".jpg"
+
+        RxDownload.getInstance(App.instance).serviceDownload(urlStr, name, dir)
+                .subscribe({
+                    toast("开始下载")
+
+                }, {
+                    toast("下载失败")
+                }, {
+                    toast("已保存到SD卡KtByHadis文件夹下")
+                })
+        undateGallery(dir, name)//把文件插入到系统图库
+    }
+
+    /**
+     * 把图片插入到系统图库
+     */
+    fun undateGallery(dir: String, name: String) {
+        val file = File("$dir/$name")
+        try {
+            MediaStore.Images.Media.insertImage(App.instance.contentResolver, file.absolutePath, name, null)
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+        // 最后通知图库更新
+        App.instance.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file)))
     }
 }
