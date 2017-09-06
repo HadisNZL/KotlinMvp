@@ -1,12 +1,11 @@
 package com.hadis.ktbyhadis.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.hadis.ktbyhadis.R
 import kotlinx.android.synthetic.main.activity_details.*
-import android.content.Intent
-
 
 
 class DetailsActivity : BaseActivity() {
@@ -21,6 +20,15 @@ class DetailsActivity : BaseActivity() {
     }
 
     private fun initView() {
+
+        toolbar.setNavigationOnClickListener {
+            if (webView.canGoBack()) {
+                webView.goBack()
+            } else {
+                finish()
+            }
+        }
+
         mDialogMananer.rotateAnimLoading()
         urlStr = intent.getStringExtra("url")
         webView.loadUrl(urlStr)
@@ -45,6 +53,14 @@ class DetailsActivity : BaseActivity() {
             textIntent.type = "text/plain"
             textIntent.putExtra(Intent.EXTRA_TEXT, urlStr)
             startActivity(Intent.createChooser(textIntent, "ktByHadis"))
+        }
+    }
+
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            finish()
         }
     }
 }
